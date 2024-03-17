@@ -19,7 +19,7 @@
 //        ham = new Hammurabi();
 //    }
 //
-//    @org.testng.annotations.Test
+//    @Test
 //    public final void testPlagueDeaths1() {
 //        int number_of_plagues = 0;
 //        for (int i = 0; i < 10000; i++) {
