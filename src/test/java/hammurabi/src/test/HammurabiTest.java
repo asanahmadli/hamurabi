@@ -1,7 +1,8 @@
-//package hammurabi;
+//package hammurabi.src.test;
 //
 //import static org.junit.Assert.*;
 //
+//import hammurabi.src.main.Hammurabi;
 //import org.junit.Before;
 //import org.junit.Test;
 //
@@ -18,7 +19,7 @@
 //        ham = new Hammurabi();
 //    }
 //
-//    @Test
+//    @org.testng.annotations.Test
 //    public final void testPlagueDeaths1() {
 //        int number_of_plagues = 0;
 //        for (int i = 0; i < 10000; i++) {
