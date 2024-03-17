@@ -57,6 +57,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
                 askHowMuchGrainToFeedPeople(bush);
                 break;
             }
+
             System.out.println(bushelsOwned + " bushels remaining");
 
 
@@ -64,6 +65,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
             int acrePlant = getNumber("How many acres do you wish to plant with seed?");
             askHowManyAcresToPlant(acrePlant, peopleOwned, acresOwned);
             System.out.println(bushelsOwned + " bushels remaining");
+
 
             boolean flag = uprising(peopleOwned,starvedPeople);
             if(flag){
@@ -75,10 +77,6 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
             System.out.println();
             i++;
         }//while loop
-        System.out.println(acresOwned);
-        System.out.println(bushelsOwned);
-        System.out.println(peopleOwned);
-
     }
 
 
@@ -105,6 +103,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     public int askHowMuchGrainToFeedPeople(int bushles) {
 
         if (bushles <= bushelsOwned) {
+            starvationDeaths(peopleOwned,bushles);
             bushelsOwned = bushelsOwned - bushles;
         } else {
 
@@ -144,7 +143,7 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     }
 
     boolean uprising(int peopleOwned, int starvedPeople) {
-        return starvedPeople > (peopleOwned * 0.45);
+        return this.starvedPeople > (peopleOwned * 0.45);
     }
 
     public int immigrants(int peopleOwned, int acresOwned, int bushelsOwned) {
@@ -153,10 +152,9 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
     }
 
 
-    public int starvationDeaths(int population, int bushelsFedToPeople) {
-        int number = bushelsFedToPeople / 20;
-        starvedPeople = peopleOwned - number;
-        peopleOwned = peopleOwned - number;
+    public int starvationDeaths(int peopleOwned, int bushelsFedToPeople) {
+        starvedPeople = peopleOwned - bushelsFedToPeople / 20;
+        this.peopleOwned = this.peopleOwned-starvedPeople;
         return starvedPeople;
     }
 
@@ -167,7 +165,6 @@ public class Hammurabi {         // must save in a file named Hammurabi.java
         sb.append("You are in year " + i + " of your ten year rule.").append("\n")
                 .append("In the previous year " + starvedPeople + " people starved to death.").append("\n")
                 .append(immigrants + " people came to the city.").append("\n")
-                .append("Message when people dies").append("\n")
                 .append("The city population is now " + peopleOwned).append("\n")
                 .append("The city now owns " + acresOwned + " acres.").append("\n")
                 .append("You harvested " + harvest() + " bushels per acre.").append("\n")
